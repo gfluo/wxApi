@@ -1,7 +1,10 @@
 const { server } = require('./config');
 const Koa = require('Koa');
+const koaBody = require('koa-body');
 const Api = require('./app/router/api');
 const app = new Koa();
+
+app.use(koaBody());
 
 app
     .use(Api.routes())
