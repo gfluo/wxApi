@@ -1,0 +1,24 @@
+{
+  "name": "wxapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gfluo/wxApi.git"
+  },
+  "author": "zoroshow@outlook.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gfluo/wxApi/issues"
+  },
+  "homepage": "https://github.com/gfluo/wxApi#readme",
+  "dependencies": {
+    "koa": "^2.7.0",
+    "koa-router": "^7.4.0",
+    "mongoose": "^5.5.2"
+  }
+}
