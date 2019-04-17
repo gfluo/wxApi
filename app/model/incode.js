@@ -9,6 +9,12 @@ let incodeSchema = new mongoose.Schema({
     incode: {
         type: String
     }
+}, {
+    timestamps: { 
+        createdAt: 'createdAt', 
+        updatedAt: 'updatedAt'
+    },
+    versionKey: false,
 });
 
 const Incode = mongoose.model('incodes', incodeSchema);
