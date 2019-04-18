@@ -8,6 +8,10 @@ const mongoose = require('./index');
 let incodeSchema = new mongoose.Schema({
     code: {
         type: String
+    },
+    deleted: {
+        type: Boolean,
+        default: false
     }
 }, {
     timestamps: { 
