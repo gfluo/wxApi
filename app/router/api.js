@@ -7,6 +7,7 @@ let router = new Router({
     prefix: `/${apiVersion}/api`
 })
 
-router.post('/userreg', logicApi.register)
+router.post('/userreg', logicApi.register);
+router.post('/userlogin', logicApi.login);
 
 module.exports = router;

@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/gfluo/wxApi#readme",
   "dependencies": {
+    "jsonwebtoken": "^8.5.1",
     "koa": "^2.7.0",
     "koa-body": "^4.1.0",
     "koa-router": "^7.4.0",

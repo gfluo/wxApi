@@ -2,6 +2,13 @@ class check {
     static async register(params) {
         let err = '';
 
+        let specialStr = new RegExp("[~!@#$^&*()=|{}':;',\\[\\].<>《》/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？]");
+        let specialCheck = specialStr.test(params.username);
+        if (specialCheck) {
+            err = '用户名包含特殊字符';
+            return err;
+        }
+
         let cnStr = /.*[\u4e00-\u9fa5]+.*$/;
         let cnCheck = cnStr.test(params.username);
         if (cnCheck) {

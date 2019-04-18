@@ -8,5 +8,9 @@ module.exports = {
         options: {
             useNewUrlParser: true
         }
+    },
+    token: {
+        secret: 'safasf',
+        expire: 48*60*1000
     }
 }

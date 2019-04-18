@@ -2,6 +2,10 @@ const User = require('../model/user')
 const Incode = require('../model/incode');
 const paramsCheck = require('../lib/paramsCheck');
 const crypto = require('crypto');
+const jwt = require('jsonwebtoken');
+///const jwtKoa = require('koa-jwt');
+const util = require('util');
+const config = require('../../config');
 
 class logicApi {
     static async register(ctx, next) {
@@ -47,6 +51,41 @@ class logicApi {
             ctx.body = {
                 code: 0,
                 message: '已成功注册，请记住用户名和密码，并登录'
+            }
+        } catch (e) {
+            ctx.body = {
+                code: -1,
+                error: e.message
+            }
+        }
+    }
+
+    static async login(ctx, next) {
+        let loginParams = ctx.request.body;
+        try {
+            let user = await User.findOne({username: loginParams.username});
+            if (user) {
+                let md5 = crypto.createHash('md5');
+                if (md5.update(loginParams.password).digest('hex') === user.pwd) {
+                    let token = jwt.sign({
+                        username: user.username,
+                        userId: user.id,
+                    }, config.token.secret, {expiresIn: config.token.expire});
+                    user.connecttimes += 1;
+                    user.lastedLoginTime = new Date();
+                    user.save();
+                    ctx.body = {
+                        code: 0,
+                        message: '登录成功',
+                        token: token
+                    }
+                    return;
+                }
+            }
+
+            ctx.body = {
+                code: -1,
+                error: '用户名或密码不准确'
             }
         } catch (e) {
             ctx.body = {
