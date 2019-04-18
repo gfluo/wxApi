@@ -1,24 +1,22 @@
-exports.generateStrs = function (strLength) {
+
+function randomNum(minNum, maxNum) {
+    let Range = maxNum - minNum;
+    let Rand = Math.random();
+    let num = minNum + Math.round(Rand * Range); //四舍五入
+    return num;
+}
+
+function generateStrs(strLength) {
     let allStrs = `0123456789abcdefghijklmnopqrstuvwxyz`;
     strLength = strLength ? strLength : 10;
     let retStrs = '';
     for (let i = 0; i < strLength; i++) {
-        ret += randomNum[0, 35];
+        let charIndex = randomNum(0, 35);
+        retStrs += allStrs[charIndex];
     }
 
     return retStrs;
 }
 
-function randomNum(minNum,maxNum){ 
-    switch(arguments.length){ 
-        case 1: 
-            return parseInt(Math.random()*minNum+1,10); 
-        break; 
-        case 2: 
-            return parseInt(Math.random()*(maxNum-minNum+1)+minNum,10); 
-        break; 
-            default: 
-                return 0; 
-            break; 
-    } 
-}
+
+exports.generateStrs = generateStrs;

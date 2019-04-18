@@ -6,7 +6,7 @@
 const mongoose = require('./index');
 
 let incodeSchema = new mongoose.Schema({
-    incode: {
+    code: {
         type: String
     }
 }, {
