@@ -10,5 +10,6 @@ let router = new Router({
 router.post('/userreg', logicApi.register);
 router.post('/userlogin', logicApi.login);
 router.post('/userconnect', logicApi.connect);
+router.post('/text', logicApi.textPageAdd);
 
 module.exports = router;

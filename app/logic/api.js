@@ -8,10 +8,41 @@ const util = require('util');
 const config = require('../../config');
 
 class logicApi {
+    static async textPageAdd(ctx, next) {   ///文字数量api
+        let params = ctx.request.body;
+        try {
+            await User.updateOne({
+                username: params.username
+            }, {
+                $inc: {
+                    textpages: parseInt(params.page)
+                }
+            });
+
+            ctx.body = {
+                success: true
+            }
+        } catch (e) {
+            ctx.body = {
+                success: false,
+                error: e.message
+            }
+        }
+    }
+
     static async connect(ctx, next) {
         let connectParams = ctx.request.body;
         try {
-            await User.updateOne({username: connectParams.username}, {$inc: {connecttimes: 1}});
+            await User.updateOne({
+                username: connectParams.username
+            }, {
+                $inc: {
+                    connecttimes: 1
+                },
+                $set: {
+                    lastedLoginTime: new Date(),
+                }
+            });
             ctx.body = {
                 success: true,
             }
