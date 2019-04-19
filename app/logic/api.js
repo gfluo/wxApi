@@ -8,6 +8,21 @@ const util = require('util');
 const config = require('../../config');
 
 class logicApi {
+    static async connect(ctx, next) {
+        let connectParams = ctx.request.body;
+        try {
+            await User.updateOne({username: connectParams.username}, {$inc: {connecttimes: 1}});
+            ctx.body = {
+                success: true,
+            }
+        } catch (e) {
+            ctx.body = {
+                success: false,
+                error: e.message
+            }
+        }
+    }
+
     static async register(ctx, next) {
         let regParams = ctx.request.body;
         try {

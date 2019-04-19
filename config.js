@@ -4,7 +4,7 @@ module.exports = {
     },
     apiVersion: '1.0',
     mongoose: {
-        uri: 'mongodb://172.20.192.236:27017/wxSmall',
+        uri: 'mongodb://192.168.0.109:27017/wxSmall',
         options: {
             useNewUrlParser: true
         }
