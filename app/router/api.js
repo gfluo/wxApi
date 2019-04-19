@@ -11,5 +11,7 @@ router.post('/userreg', logicApi.register);
 router.post('/userlogin', logicApi.login);
 router.post('/userconnect', logicApi.connect);
 router.post('/text', logicApi.textPageAdd);
+router.post('/image', logicApi.imagePageAdd);
+
 
 module.exports = router;

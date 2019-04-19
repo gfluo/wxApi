@@ -8,6 +8,25 @@ const util = require('util');
 const config = require('../../config');
 
 class logicApi {
+    static async imagePageAdd(ctx, next) { ///图片输入api
+        let params = ctx.request.body;
+        try {
+            await User.updateOne({
+                username: params.username,
+                $inc: {
+                    imagepages: params.page
+                }
+            });
+            ctx.body = {
+                success: true
+            }
+        } catch (e) {
+            ctx.body = {
+                success: false,
+                error: e.message
+            }
+        }
+    }
     static async textPageAdd(ctx, next) {   ///文字数量api
         let params = ctx.request.body;
         try {
