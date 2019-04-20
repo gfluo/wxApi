@@ -13,5 +13,6 @@ router.post('/text', logicApi.textPageAdd);
 router.post('/image', logicApi.imagePageAdd);
 router.post('/createFont', logicApi.creareFont);
 router.post('/getfontinfo', logicApi.fontInfo);
+router.post('/getfontdetail', logicApi.fontDetail);
 
 module.exports = router;

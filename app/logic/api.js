@@ -8,6 +8,35 @@ const jwt = require('jsonwebtoken');
 const config = require('../../config');
 
 class logicApi {
+    static async fontDetail(ctx, next) {
+        let params = ctx.request.body;
+        try {
+            let detail = await FontStore.findOne({
+                username: params.username,
+                deleted: false,
+                fontfile: params.fontfile
+            }, '-createdAt -updatedAt -_id -userId');
+
+            if (detail) {
+                ctx.body = {
+                    success: true,
+                    message: '获取成功',
+                    data: detail
+                }
+            } else {
+                ctx.body = {
+                    success: false,
+                    error: '获取字体失败，当前字体不存在'
+                }
+            }
+        } catch (e) {
+            ctx.body = {
+                success: false,
+                error: e.message
+            }
+        }
+    }
+
     static async fontInfo(ctx, next) {
         let params = ctx.request.body;
         try {
