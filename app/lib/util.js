@@ -1,4 +1,7 @@
 
+const allStrs = `0123456789abcdefghijklmnopqrstuvwxyz`;
+const eStrs = `abcdefghijklmnopqrstuvwxyz`;
+
 function randomNum(minNum, maxNum) {
     let Range = maxNum - minNum;
     let Rand = Math.random();
@@ -6,13 +9,13 @@ function randomNum(minNum, maxNum) {
     return num;
 }
 
-function generateStrs(strLength) {
-    let allStrs = `0123456789abcdefghijklmnopqrstuvwxyz`;
+function generateStrs(strLength, type) {
+    let strs = type ? eStrs : allStrs;
     strLength = strLength ? strLength : 10;
     let retStrs = '';
     for (let i = 0; i < strLength; i++) {
-        let charIndex = randomNum(0, 35);
-        retStrs += allStrs[charIndex];
+        let charIndex = randomNum(0, (strs.length - 1));
+        retStrs += strs[charIndex];
     }
 
     return retStrs;

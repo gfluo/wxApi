@@ -3,11 +3,13 @@ const Koa = require('Koa');
 const koaBody = require('koa-body');
 const Api = require('./app/router/api');
 const Admin = require('./app/router/admin');
+const Auth = require('./app/auth');
 const app = new Koa();
 
 app.use(koaBody());
 
 app
+    .use(Auth)
     .use(Api.routes())
     .use(Api.allowedMethods())
     .use(Admin.routes())

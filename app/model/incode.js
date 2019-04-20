@@ -21,5 +21,5 @@ let incodeSchema = new mongoose.Schema({
     versionKey: false,
 });
 
-const Incode = mongoose.model('incodes', incodeSchema);
+const Incode = mongoose.model('incode', incodeSchema);
 module.exports = Incode;

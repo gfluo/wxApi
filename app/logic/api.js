@@ -1,13 +1,44 @@
 const User = require('../model/user')
 const Incode = require('../model/incode');
+const FontStore = require('../model/fontStore');
 const paramsCheck = require('../lib/paramsCheck');
+const selfUtil = require('../lib/util');
 const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
-///const jwtKoa = require('koa-jwt');
-const util = require('util');
 const config = require('../../config');
 
 class logicApi {
+    static async creareFont(ctx, next) {
+        let params = ctx.request.body;
+        try {
+            ///let { share } = params;
+            let strs = selfUtil.generateStrs(15, 1);    ///生成15位英文字符串
+            let fontStore = new FontStore({
+                username: params.username,
+                userId: params.userId,
+                fontname: params.fontname,
+                fontlib: params.fontlib,
+                fontfile: strs,
+                share: params.share,
+                data: [],
+                preview: [],
+            })
+            await fontStore.save();
+            ctx.body = {
+                success: true,
+                message: '创建成功',
+                data: {
+                    fontfile: strs
+                }
+            }
+        } catch (e) {
+            ctx.body = {
+                success: false,
+                error: e.message
+            }
+        }
+    }
+
     static async imagePageAdd(ctx, next) { ///图片输入api
         let params = ctx.request.body;
         try {
