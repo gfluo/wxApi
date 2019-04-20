@@ -31,11 +31,13 @@ let fontStoreScheam = new mongoose.Schema({
     },
     share: {
         type: Boolean,
+        default: false,
     },
     data: [],
     preview: [],
     deleted: {
-        type: Boolean
+        type: Boolean,
+        default: false
     }
 }, {
     timestamps: { 

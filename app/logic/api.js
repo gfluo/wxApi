@@ -8,6 +8,25 @@ const jwt = require('jsonwebtoken');
 const config = require('../../config');
 
 class logicApi {
+    static async fontInfo(ctx, next) {
+        let params = ctx.request.body;
+        try {
+            let fonts = await FontStore.find({
+                userId: params.userId, deleted: false
+            }, 'fontname fontlib done fontfile');
+            ctx.body = {
+                success: true,
+                mesage: '获取成功',
+                data: fonts
+            }
+        } catch (e) {
+            ctx.body = {
+                success: false,
+                error: e.message
+            }
+        }
+    }
+
     static async creareFont(ctx, next) {
         let params = ctx.request.body;
         try {
