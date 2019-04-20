@@ -8,6 +8,27 @@ const jwt = require('jsonwebtoken');
 const config = require('../../config');
 
 class logicApi {
+    static async delFont(ctx, next) {
+        let params = ctx.request.body;
+        try {
+            await FontStore.updateOne({
+                username: params.username,
+                fontfile: params.fontfile
+            }, {$set: {
+                deleted: true
+            }});
+            ctx.body = {
+                success: true,
+                message: '删除成功'
+            }
+        } catch (e) {
+            ctx.body = {
+                success: false,
+                error: e.message
+            }
+        }
+    }
+
     static async fontDetail(ctx, next) {
         let params = ctx.request.body;
         try {
@@ -45,7 +66,7 @@ class logicApi {
             }, 'fontname fontlib done fontfile');
             ctx.body = {
                 success: true,
-                mesage: '获取成功',
+                message: '获取成功',
                 data: fonts
             }
         } catch (e) {
