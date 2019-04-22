@@ -1,6 +1,7 @@
 const User = require('../model/user')
 const Incode = require('../model/incode');
 const FontStore = require('../model/fontStore');
+const Word = require('../model/word');
 const paramsCheck = require('../lib/paramsCheck');
 const selfUtil = require('../lib/util');
 const crypto = require('crypto');
@@ -11,12 +12,18 @@ class logicApi {
     static async getWord(ctx, next) {
         let params = ctx.request.body;
         try {
-            let word = await FontStore.findOne({fontfile: params.fontfile, 'data.word': params.word});
+            let word = 
+                await Word.findOne({fontfile: params.fontfile, word: params.word}, '-_id word code');
             if (word) {
                 ctx.body = {
                     success: true,
                     message: '获取成功',
-                    data: {}
+                    data: word
+                }
+            } else {
+                ctx.body = {
+                    success: false,
+                    error: '该文字没有录入'
                 }
             }
         } catch (e) {
@@ -33,8 +40,20 @@ class logicApi {
             params = JSON.parse(params);
         }
         try {
-            await FontStore.updateOne({"fontfile": params.fontfile}, {$pull: {data: {word: params.wordcode.word}}});
-            await FontStore.updateOne({"fontfile": params.fontfile}, {$push: {data: {word: params.wordcode.word, code: params.wordcode.code}}});
+            let word = 
+                await Word.findOne({userId: params.userId, fontfile: params.fontfile, word: params.wordcode.word});
+            if (word) {
+                word.code = params.wordcode.code;
+                await word.save();
+            } else {
+                word = new Word({
+                    userId: params.userId,
+                    fontfile: params.fontfile,
+                    word: params.wordcode.word,
+                    code: params.wordcode.code
+                })
+                await word.save();
+            }
             ctx.body = {
                 success: true,
                 message: '增加字体成功'
@@ -80,6 +99,9 @@ class logicApi {
             }, '-createdAt -updatedAt -_id -userId');
 
             if (detail) {
+                let words = 
+                    await Word.find({userId: params.userId, fontfile: params.fontfile}, '-_id word code');
+                detail.data = words;
                 ctx.body = {
                     success: true,
                     message: '获取成功',
