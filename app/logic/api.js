@@ -8,6 +8,25 @@ const jwt = require('jsonwebtoken');
 const config = require('../../config');
 
 class logicApi {
+    static async getWord(ctx, next) {
+        let params = ctx.request.body;
+        try {
+            let word = await FontStore.findOne({fontfile: params.fontfile, 'data.word': params.word});
+            if (word) {
+                ctx.body = {
+                    success: true,
+                    message: '获取成功',
+                    data: {}
+                }
+            }
+        } catch (e) {
+            ctx.body = {
+                success: false,
+                error: e.message
+            }
+        }
+    }
+
     static async addWord(ctx, next) {
         let params = ctx.request.body;
         if (typeof ctx.request.body === "string") {
