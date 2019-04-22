@@ -8,15 +8,37 @@ const jwt = require('jsonwebtoken');
 const config = require('../../config');
 
 class logicApi {
+    static async addWord(ctx, next) {
+        let params = ctx.request.body;
+        if (typeof ctx.request.body === "string") {
+            params = JSON.parse(params);
+        }
+        try {
+            await FontStore.updateOne({"fontfile": params.fontfile}, {$pull: {data: {word: params.wordcode.word}}});
+            await FontStore.updateOne({"fontfile": params.fontfile}, {$push: {data: {word: params.wordcode.word, code: params.wordcode.code}}});
+            ctx.body = {
+                success: true,
+                message: '增加字体成功'
+            }
+        } catch (e) {
+            ctx.body = {
+                success: false,
+                error: e.message
+            }
+        }
+    }
+
     static async delFont(ctx, next) {
         let params = ctx.request.body;
         try {
             await FontStore.updateOne({
                 username: params.username,
                 fontfile: params.fontfile
-            }, {$set: {
-                deleted: true
-            }});
+            }, {
+                $set: {
+                    deleted: true
+                }
+                });
             ctx.body = {
                 success: true,
                 message: '删除成功'
@@ -133,10 +155,10 @@ class logicApi {
             await User.updateOne({
                 username: params.username
             }, {
-                $inc: {
-                    textpages: parseInt(params.page)
-                }
-            });
+                    $inc: {
+                        textpages: parseInt(params.page)
+                    }
+                });
 
             ctx.body = {
                 success: true
@@ -155,13 +177,13 @@ class logicApi {
             await User.updateOne({
                 username: connectParams.username
             }, {
-                $inc: {
-                    connecttimes: 1
-                },
-                $set: {
-                    lastedLoginTime: new Date(),
-                }
-            });
+                    $inc: {
+                        connecttimes: 1
+                    },
+                    $set: {
+                        lastedLoginTime: new Date(),
+                    }
+                });
             ctx.body = {
                 success: true,
             }
@@ -228,14 +250,14 @@ class logicApi {
     static async login(ctx, next) {
         let loginParams = ctx.request.body;
         try {
-            let user = await User.findOne({username: loginParams.username});
+            let user = await User.findOne({ username: loginParams.username });
             if (user) {
                 let md5 = crypto.createHash('md5');
                 if (md5.update(loginParams.password).digest('hex') === user.pwd) {
                     let token = jwt.sign({
                         username: user.username,
                         userId: user.id,
-                    }, config.token.secret, {expiresIn: config.token.expire});
+                    }, config.token.secret, { expiresIn: config.token.expire });
                     user.connecttimes += 1;
                     user.lastedLoginTime = new Date();
                     user.save();

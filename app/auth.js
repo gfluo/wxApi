@@ -2,7 +2,7 @@
  * Summary: 权限认证
  * @author: zoroshow@outlook.com
  */
-const { appVersion, token } = require('../config');
+const { apiVersion, token } = require('../config');
 const jwt = require('jsonwebtoken');
 ///const jwtKoa = require('koa-jwt');
 const util = require('util');
@@ -11,7 +11,7 @@ const verify = util.promisify(jwt.verify);
 module.exports = async (ctx, next) => {
     let url = ctx.request.url;
 
-    if (`/${appVersion}/api/userreg` === url || `/${appVersion}/api/userlogin` === url) {
+    if (`/${apiVersion}/api/userreg` === url || `/${apiVersion}/api/userlogin` === url) {
         await next();
     } else {
         try {

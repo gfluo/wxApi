@@ -15,5 +15,6 @@ router.post('/createFont', logicApi.creareFont);
 router.post('/getfontinfo', logicApi.fontInfo);
 router.post('/getfontdetail', logicApi.fontDetail);
 router.post('/delfont', logicApi.delFont);
+router.post('/addword', logicApi.addWord);
 
 module.exports = router;
