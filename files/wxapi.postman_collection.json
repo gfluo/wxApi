@@ -1,0 +1,405 @@
+{
+	"info": {
+		"_postman_id": "a3267de5-cc12-479f-bbb6-73d19de06ade",
+		"name": "wxapi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:3000/1.0/api/userconnect",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "luoguifeng",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/1.0/api/userconnect",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"1.0",
+						"api",
+						"userconnect"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/1.0/api/userreg",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "luoguifeng",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456_l",
+							"type": "text"
+						},
+						{
+							"key": "incode",
+							"value": "nwnkwrwary",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/1.0/api/userreg",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"1.0",
+						"api",
+						"userreg"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/1.0/admin/generateIncode",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3000/1.0/admin/generateIncode",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"1.0",
+						"admin",
+						"generateIncode"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/1.0/api/image",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "page",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "luoguifeng",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/1.0/api/image",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"1.0",
+						"api",
+						"image"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/1.0/api/delfont",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imx1b2d1aWZlbmciLCJ1c2VySWQiOiI1Y2I5ZjcwODBlZTM0YjJiZmNiMjZmMjUiLCJpYXQiOjE1NTU3NDI4NjMsImV4cCI6MTU1ODYyMjg2M30.IL02-6E3-A3kszbD5OG7krF0Q1V-zzTO899QAyae7p4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "fontfile",
+							"value": "xhrmrdfrwmighvi",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/1.0/api/delfont",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"1.0",
+						"api",
+						"delfont"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/1.0/api/getfontdetail",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imx1b2d1aWZlbmciLCJ1c2VySWQiOiI1Y2I5ZjcwODBlZTM0YjJiZmNiMjZmMjUiLCJpYXQiOjE1NTU3NDI4NjMsImV4cCI6MTU1ODYyMjg2M30.IL02-6E3-A3kszbD5OG7krF0Q1V-zzTO899QAyae7p4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "fontfile",
+							"value": "xhrmrdfrwmighvi",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/1.0/api/getfontdetail",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"1.0",
+						"api",
+						"getfontdetail"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/1.0/api/getfontinfo",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imx1b2d1aWZlbmciLCJ1c2VySWQiOiI1Y2I5ZjcwODBlZTM0YjJiZmNiMjZmMjUiLCJpYXQiOjE1NTU3NDI4NjMsImV4cCI6MTU1ODYyMjg2M30.IL02-6E3-A3kszbD5OG7krF0Q1V-zzTO899QAyae7p4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "fontfile",
+							"value": "xhrmrdfrwmighvi",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/1.0/api/getfontinfo",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"1.0",
+						"api",
+						"getfontinfo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/1.0/api/createFont",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imx1b2d1aWZlbmciLCJ1c2VySWQiOiI1Y2I5ZjcwODBlZTM0YjJiZmNiMjZmMjUiLCJpYXQiOjE1NTU3NDI4NjMsImV4cCI6MTU1ODYyMjg2M30.IL02-6E3-A3kszbD5OG7krF0Q1V-zzTO899QAyae7p4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "share",
+							"value": "false",
+							"type": "text"
+						},
+						{
+							"key": "fontname",
+							"value": "仿宋体",
+							"type": "text"
+						},
+						{
+							"key": "fontlib",
+							"value": "F002",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/1.0/api/createFont",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"1.0",
+						"api",
+						"createFont"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/1.0/api/addword",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imx1b2d1aWZlbmciLCJ1c2VySWQiOiI1Y2I5ZjcwODBlZTM0YjJiZmNiMjZmMjUiLCJpYXQiOjE1NTU5NTAwMzcsImV4cCI6MTU1ODgzMDAzN30.hBjtBPcviuQTSZXLiJ03Wjwx9WsOOx-sgYMS_F6DXW0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"fontfile\": \"xhrmrdfrwmighvi\",\n\t\"wordcode\": {\n\t\t\"word\": \"我\",\n\t\t\"code\": \"000005\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "localhost:3000/1.0/api/addword",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"1.0",
+						"api",
+						"addword"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

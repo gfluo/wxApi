@@ -13,7 +13,11 @@ class logicApi {
         let params = ctx.request.body;
         try {
             let word = 
-                await Word.findOne({fontfile: params.fontfile, word: params.word}, '-_id word code');
+                await Word.findOne({
+                    fontfile: params.fontfile, 
+                    word: params.word,
+                    userId: params.userId
+                }, '-_id word code');
             if (word) {
                 ctx.body = {
                     success: true,

@@ -7,5 +7,6 @@ let router = new Router({
 })
 
 router.get('/generateIncode', logicAdmin.generateIncode);
+router.post('/overword', logicAdmin.getWord);
 
 module.exports = router;
