@@ -11,12 +11,22 @@ const verify = util.promisify(jwt.verify);
 module.exports = async (ctx, next) => {
     let url = ctx.request.url;
 
-    if (`/${apiVersion}/api/userreg` === url || `/${apiVersion}/api/userlogin` === url) {
+    if (`/${apiVersion}/api/userreg` === url 
+        || `/${apiVersion}/api/userlogin` === url
+        || `/${apiVersion}/admin/register` === url
+        || `/${apiVersion}/admin/login` === url) {
         await next();
     } else {
         try {
             let userToken = ctx.request.headers["authorization"].split(' ')[1];
             let userInfo = await verify(userToken, token.secret);
+            if (-1 < url.indexOf('admin') && !userInfo.admin) {
+                ctx.body = {
+                    success: false,
+                    error: 'token认证失败'
+                };
+                return;
+            }
             ctx.request.body.username = userInfo.username;
             ctx.request.body.userId = userInfo.userId;
             await next();

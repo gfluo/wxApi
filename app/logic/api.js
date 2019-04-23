@@ -194,6 +194,7 @@ class logicApi {
             }
         }
     }
+    
     static async textPageAdd(ctx, next) {   ///文字数量api
         let params = ctx.request.body;
         try {

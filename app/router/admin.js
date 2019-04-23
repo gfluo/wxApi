@@ -6,7 +6,9 @@ let router = new Router({
     prefix: `/${apiVersion}/admin`
 })
 
-router.get('/generateIncode', logicAdmin.generateIncode);
+router.post('/generateIncode', logicAdmin.generateIncode);
 router.post('/overword', logicAdmin.getWord);
+router.post('/register', logicAdmin.register);
+router.post('/login', logicAdmin.login);
 
 module.exports = router;
