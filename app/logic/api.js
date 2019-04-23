@@ -194,7 +194,7 @@ class logicApi {
             }
         }
     }
-    
+
     static async textPageAdd(ctx, next) {   ///文字数量api
         let params = ctx.request.body;
         try {
@@ -248,7 +248,7 @@ class logicApi {
             if (err) {
                 console.warn(err);
                 ctx.body = {
-                    code: -1,
+                    success: false,
                     error: '请输入正确格式的用户名和密码'
                 };
                 return;
@@ -256,7 +256,7 @@ class logicApi {
             let user = await User.findOne({ username: regParams.username });
             if (user) {
                 ctx.body = {
-                    code: -1,
+                    success: false,
                     error: '该用户名已被注册'
                 }
                 return;
@@ -265,7 +265,7 @@ class logicApi {
             let incode = await Incode.findOne({ code: regParams.incode, deleted: false });
             if (!incode) {
                 ctx.body = {
-                    code: -1,
+                    success: false,
                     error: '无效的邀请码'
                 }
                 return;
@@ -282,12 +282,12 @@ class logicApi {
             await user.save();
             await Incode.updateOne({ code: regParams.incode }, { $set: { deleted: true } });
             ctx.body = {
-                code: 0,
+                success: true,
                 message: '已成功注册，请记住用户名和密码，并登录'
             }
         } catch (e) {
             ctx.body = {
-                code: -1,
+                success: false,
                 error: e.message
             }
         }
@@ -308,7 +308,7 @@ class logicApi {
                     user.lastedLoginTime = new Date();
                     user.save();
                     ctx.body = {
-                        code: 0,
+                        success: true,
                         message: '登录成功',
                         token: token
                     }
@@ -317,12 +317,12 @@ class logicApi {
             }
 
             ctx.body = {
-                code: -1,
+                success: false,
                 error: '用户名或密码不准确'
             }
         } catch (e) {
             ctx.body = {
-                code: -1,
+                success: false,
                 error: e.message
             }
         }
