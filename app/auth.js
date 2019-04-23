@@ -14,7 +14,13 @@ module.exports = async (ctx, next) => {
     if (`/${apiVersion}/api/userreg` === url 
         || `/${apiVersion}/api/userlogin` === url
         || `/${apiVersion}/admin/register` === url
-        || `/${apiVersion}/admin/login` === url) {
+        || `/${apiVersion}/admin/login` === url
+        || `/${apiVersion}/api/macconnect` === url
+        || `/${apiVersion}/api/mactext` === url
+        || `/${apiVersion}/api/macimage` === url
+        || `/${apiVersion}/api/userconnect` === url
+        || `/${apiVersion}/api/text` === url
+        || `/${apiVersion}/api/image` === url) {
         await next();
     } else {
         try {

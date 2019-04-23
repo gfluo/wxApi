@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "a3267de5-cc12-479f-bbb6-73d19de06ade",
+		"_postman_id": "43d9ec0f-4b4f-475e-af54-3e09d5dcdbc4",
 		"name": "wxapi",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -98,11 +98,34 @@
 		{
 			"name": "localhost:3000/1.0/admin/generateIncode",
 			"request": {
-				"method": "GET",
-				"header": [],
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiYWRtaW4iOnRydWUsImlhdCI6MTU1NjAwNzE0OSwiZXhwIjoxNTU4ODg3MTQ5fQ.PCXMasWVrlINtOFGEMh-Ps23jJBDoQNVl2PKAamlT_g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
 				"body": {
-					"mode": "raw",
-					"raw": ""
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "number",
+							"value": "3",
+							"type": "text"
+						}
+					]
 				},
 				"url": {
 					"raw": "localhost:3000/1.0/admin/generateIncode",
@@ -147,7 +170,7 @@
 					]
 				},
 				"url": {
-					"raw": "localhost:3000/1.0/api/image",
+					"raw": "localhost:3000/1.0/api/text",
 					"host": [
 						"localhost"
 					],
@@ -155,7 +178,7 @@
 					"path": [
 						"1.0",
 						"api",
-						"image"
+						"text"
 					]
 				}
 			},
@@ -346,7 +369,7 @@
 					]
 				},
 				"url": {
-					"raw": "localhost:3000/1.0/api/createFont",
+					"raw": "localhost:3000/1.0/api/createfont",
 					"host": [
 						"localhost"
 					],
@@ -354,7 +377,7 @@
 					"path": [
 						"1.0",
 						"api",
-						"createFont"
+						"createfont"
 					]
 				}
 			},
@@ -396,6 +419,297 @@
 						"1.0",
 						"api",
 						"addword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/1.0/admin/register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "aelab",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/1.0/admin/register",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"1.0",
+						"admin",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/1.0/api/mactext",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiYWRtaW4iOnRydWUsImlhdCI6MTU1NjAwNzE0OSwiZXhwIjoxNTU4ODg3MTQ5fQ.PCXMasWVrlINtOFGEMh-Ps23jJBDoQNVl2PKAamlT_g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "macname",
+							"value": "sadsad1fasefaaas",
+							"type": "text"
+						},
+						{
+							"key": "page",
+							"value": "10",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/1.0/api/mactext",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"1.0",
+						"api",
+						"mactext"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/1.0/api/macimage",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiYWRtaW4iOnRydWUsImlhdCI6MTU1NjAwNzE0OSwiZXhwIjoxNTU4ODg3MTQ5fQ.PCXMasWVrlINtOFGEMh-Ps23jJBDoQNVl2PKAamlT_g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "macname",
+							"value": "sadsad1fasefaaas",
+							"type": "text"
+						},
+						{
+							"key": "page",
+							"value": "10",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/1.0/api/macimage",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"1.0",
+						"api",
+						"macimage"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/1.0/api/macconnect",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "macname",
+							"value": "sadsad1fasefa",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/1.0/api/macconnect",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"1.0",
+						"api",
+						"macconnect"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/1.0/admin/login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "aelab",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/1.0/admin/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"1.0",
+						"admin",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/1.0/api/userlogin",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "luoguifeng",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456_aa",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/1.0/api/userlogin",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"1.0",
+						"api",
+						"userlogin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/1.0/api/image",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3000/1.0/api/image",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"1.0",
+						"api",
+						"image"
 					]
 				}
 			},

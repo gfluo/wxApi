@@ -7,7 +7,8 @@ const mongoose = require('./index');
 
 let incodeSchema = new mongoose.Schema({
     code: {
-        type: String
+        type: String,
+        unique: true
     },
     deleted: {
         type: Boolean,

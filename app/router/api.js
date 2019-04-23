@@ -17,5 +17,8 @@ router.post('/getfontdetail', logicApi.fontDetail);
 router.post('/delfont', logicApi.delFont);
 router.post('/addword', logicApi.addWord);
 router.post('/getword', logicApi.getWord);
+router.post('/macconnect', logicApi.macConnect);
+router.post('/mactext', logicApi.mactext);
+router.post('/macimage', logicApi.macimage);
 
 module.exports = router;

@@ -107,7 +107,7 @@ class logicAdmin {
             }, config.token.secret, { expiresIn: config.token.expire });
 
             ctx.body = {
-                code: 0,
+                success: true,
                 message: '登录成功',
                 token: token
             };

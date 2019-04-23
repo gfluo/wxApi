@@ -1,4 +1,5 @@
-const User = require('../model/user')
+const User = require('../model/user');
+const MacConn = require('../model/macconn');
 const Incode = require('../model/incode');
 const FontStore = require('../model/fontStore');
 const Word = require('../model/word');
@@ -9,6 +10,88 @@ const jwt = require('jsonwebtoken');
 const config = require('../../config');
 
 class logicApi {
+    static async macimage(ctx, next) {
+        let params = ctx.request.body;
+        params.page = parseInt(params.page);
+        try {
+            let macconn = await MacConn.findOne({macname: params.macname});
+            if (macconn) {
+                ///macconn.connecttimes += 1;
+                ///macconn.lastedLoginTime = new Date();
+                macconn.imagepages += params.page;
+                await macconn.save();
+            } else {
+                macconn = new MacConn({
+                    macname: params.macname,
+                    imagepages: params.page
+                })
+                await macconn.save();
+            }
+
+            ctx.body = {
+                success: true
+            }
+        } catch (e) {
+            ctx.body = {
+                success: false
+            }
+        }
+    }
+
+    static async mactext(ctx, next) {
+        let params = ctx.request.body;
+        params.page = parseInt(params.page);
+        try {
+            let macconn = await MacConn.findOne({macname: params.macname});
+            if (macconn) {
+                ///macconn.connecttimes += 1;
+                ///macconn.lastedLoginTime = new Date();
+                macconn.textpages += params.page;
+                await macconn.save();
+            } else {
+                macconn = new MacConn({
+                    macname: params.macname,
+                    textpages: params.page
+                })
+                await macconn.save();
+            }
+
+            ctx.body = {
+                success: true
+            }
+        } catch (e) {
+            ctx.body = {
+                success: false
+            }
+        }
+    }
+
+    static async macConnect(ctx, next) {
+        let params = ctx.request.body;
+        try {
+            let macconn = await MacConn.findOne({macname: params.macname});
+            if (macconn) {
+                macconn.connecttimes += 1;
+                macconn.lastedLoginTime = new Date();
+                await macconn.save();
+            } else {
+                macconn = new MacConn({
+                    macname: params.macname
+                })
+                await macconn.save();
+            }
+
+            ctx.body = {
+                success: true
+            }
+        } catch (e) {
+            ctx.body = {
+                success: false,
+                error: e.message
+            }
+        }
+    }
+
     static async getWord(ctx, next) {
         let params = ctx.request.body;
         try {
