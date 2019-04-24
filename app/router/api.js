@@ -11,7 +11,7 @@ router.post('/userlogin', logicApi.login);
 router.post('/userconnect', logicApi.connect);
 router.post('/text', logicApi.textPageAdd);
 router.post('/image', logicApi.imagePageAdd);
-router.post('/createFont', logicApi.creareFont);
+router.post('/createfont', logicApi.creareFont);
 router.post('/getfontinfo', logicApi.fontInfo);
 router.post('/getfontdetail', logicApi.fontDetail);
 router.post('/delfont', logicApi.delFont);

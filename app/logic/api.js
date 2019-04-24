@@ -14,7 +14,7 @@ class logicApi {
         let params = ctx.request.body;
         params.page = parseInt(params.page);
         try {
-            let macconn = await MacConn.findOne({macname: params.macname});
+            let macconn = await MacConn.findOne({ macname: params.macname });
             if (macconn) {
                 ///macconn.connecttimes += 1;
                 ///macconn.lastedLoginTime = new Date();
@@ -42,7 +42,7 @@ class logicApi {
         let params = ctx.request.body;
         params.page = parseInt(params.page);
         try {
-            let macconn = await MacConn.findOne({macname: params.macname});
+            let macconn = await MacConn.findOne({ macname: params.macname });
             if (macconn) {
                 ///macconn.connecttimes += 1;
                 ///macconn.lastedLoginTime = new Date();
@@ -69,7 +69,7 @@ class logicApi {
     static async macConnect(ctx, next) {
         let params = ctx.request.body;
         try {
-            let macconn = await MacConn.findOne({macname: params.macname});
+            let macconn = await MacConn.findOne({ macname: params.macname });
             if (macconn) {
                 macconn.connecttimes += 1;
                 macconn.lastedLoginTime = new Date();
@@ -95,9 +95,9 @@ class logicApi {
     static async getWord(ctx, next) {
         let params = ctx.request.body;
         try {
-            let word = 
+            let word =
                 await Word.findOne({
-                    fontfile: params.fontfile, 
+                    fontfile: params.fontfile,
                     word: params.word,
                     userId: params.userId
                 }, '-_id word code');
@@ -127,8 +127,21 @@ class logicApi {
             params = JSON.parse(params);
         }
         try {
-            let word = 
-                await Word.findOne({userId: params.userId, fontfile: params.fontfile, word: params.wordcode.word});
+            let fontStore = await FontStore.findOne({
+                userId: params.userId, 
+                fontfile: params.fontfile,
+                deleted: false,
+            });
+            if (!fontStore) {
+                ctx.body = {
+                    success: false,
+                    error: '当前字库不存在，添加失败'
+                };
+                return;
+            }
+
+            let word =
+                await Word.findOne({ userId: params.userId, fontfile: params.fontfile, word: params.wordcode.word });
             if (word) {
                 word.code = params.wordcode.code;
                 await word.save();
@@ -156,17 +169,25 @@ class logicApi {
     static async delFont(ctx, next) {
         let params = ctx.request.body;
         try {
-            await FontStore.updateOne({
+            let res = await FontStore.updateOne({
                 username: params.username,
-                fontfile: params.fontfile
+                fontfile: params.fontfile,
+                deleted: false,
             }, {
-                $set: {
-                    deleted: true
-                }
+                    $set: {
+                        deleted: true
+                    }
                 });
-            ctx.body = {
-                success: true,
-                message: '删除成功'
+            if (res.n === 1) {
+                ctx.body = {
+                    success: true,
+                    message: '删除字体库成功'
+                }
+            } else {
+                ctx.body = {
+                    message: false,
+                    message: '删除字体库失败'
+                }
             }
         } catch (e) {
             ctx.body = {
@@ -186,8 +207,8 @@ class logicApi {
             }, '-createdAt -updatedAt -_id -userId');
 
             if (detail) {
-                let words = 
-                    await Word.find({userId: params.userId, fontfile: params.fontfile}, '-_id word code');
+                let words =
+                    await Word.find({ userId: params.userId, fontfile: params.fontfile }, '-_id word code');
                 detail.data = words;
                 ctx.body = {
                     success: true,

@@ -1,12 +1,12 @@
 {
 	"info": {
-		"_postman_id": "43d9ec0f-4b4f-475e-af54-3e09d5dcdbc4",
+		"_postman_id": "a52caff0-f8f5-4f37-a2eb-750d2c334f07",
 		"name": "wxapi",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "localhost:3000/1.0/api/userconnect",
+			"name": "通过用户名连接api",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -49,7 +49,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:3000/1.0/api/userreg",
+			"name": "用户注册api",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -96,7 +96,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:3000/1.0/admin/generateIncode",
+			"name": "管理员生成邀请码api",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -143,7 +143,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:3000/1.0/api/image",
+			"name": "通过用户名图片输入api",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -185,7 +185,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:3000/1.0/api/delfont",
+			"name": "删除字体库api",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -232,7 +232,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:3000/1.0/api/getfontdetail",
+			"name": "获取字体库具体信息api",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -279,7 +279,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:3000/1.0/api/getfontinfo",
+			"name": "获取用户字体库基本信息api",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -327,7 +327,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:3000/1.0/api/createFont",
+			"name": "创建字体库api",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -384,7 +384,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:3000/1.0/api/addword",
+			"name": "修改或新增某个字api",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -425,7 +425,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:3000/1.0/admin/register",
+			"name": "管理员注册接口",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -467,7 +467,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:3000/1.0/api/mactext",
+			"name": "通过mac文字数量api",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -519,7 +519,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:3000/1.0/api/macimage",
+			"name": "mac图片输入api",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -571,7 +571,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:3000/1.0/api/macconnect",
+			"name": "mac用户连接",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -608,7 +608,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:3000/1.0/admin/login",
+			"name": "管理员登录",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -650,7 +650,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:3000/1.0/api/userlogin",
+			"name": "用户登录",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -692,16 +692,86 @@
 			"response": []
 		},
 		{
-			"name": "localhost:3000/1.0/api/image",
+			"name": "获取某个字api(超级权限)",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imx1b2d1aWZlbmciLCJ1c2VySWQiOiI1Y2I5ZjcwODBlZTM0YjJiZmNiMjZmMjUiLCJpYXQiOjE1NTU3NDI4NjMsImV4cCI6MTU1ODYyMjg2M30.IL02-6E3-A3kszbD5OG7krF0Q1V-zzTO899QAyae7p4",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
 				"body": {
-					"mode": "raw",
-					"raw": ""
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "fontfile",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "word",
+							"value": "",
+							"type": "text"
+						}
+					]
 				},
 				"url": {
-					"raw": "localhost:3000/1.0/api/image",
+					"raw": "localhost:3000/1.0/admin/overword",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"1.0",
+						"admin",
+						"overword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "通过用户名文字数量api",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "luoguifeng",
+							"type": "text"
+						},
+						{
+							"key": "page",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/1.0/api/text",
 					"host": [
 						"localhost"
 					],
@@ -709,7 +779,59 @@
 					"path": [
 						"1.0",
 						"api",
-						"image"
+						"text"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "获取某个字api",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imx1b2d1aWZlbmciLCJ1c2VySWQiOiI1Y2I5ZjcwODBlZTM0YjJiZmNiMjZmMjUiLCJpYXQiOjE1NTU3NDI4NjMsImV4cCI6MTU1ODYyMjg2M30.IL02-6E3-A3kszbD5OG7krF0Q1V-zzTO899QAyae7p4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "fontfile",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "word",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/1.0/api/getword",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"1.0",
+						"api",
+						"getword"
 					]
 				}
 			},

@@ -3,16 +3,16 @@ class check {
         let err = '';
 
         let specialStr = new RegExp("[~!@#$^&*()=|{}':;',\\[\\].<>《》/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？]");
-        let specialCheck = specialStr.test(params.username);
+        let specialCheck = specialStr.test(params.username) || specialStr.test(params.password);
         if (specialCheck) {
-            err = '用户名包含特殊字符';
+            err = '用户名或者密码包含特殊字符';
             return err;
         }
 
         let cnStr = /.*[\u4e00-\u9fa5]+.*$/;
-        let cnCheck = cnStr.test(params.username);
+        let cnCheck = cnStr.test(params.username) || cnStr.test(params.password);
         if (cnCheck) {
-            err = '用户名含有汉字';
+            err = '用户名或者密码含有汉字';
             return err;
         }
 
@@ -20,24 +20,6 @@ class check {
             err = '用户名长度小于6';
             return err;
         }
-
-        let num = /[0-9]/;
-        let numCheck = num.test(params.password);
-        if (!numCheck) {
-            err = '密码不包含数字';
-            return err;
-        }
-        let str = /[a-z]/i;
-        let strCheck = str.test(params.password);
-        if (!strCheck) {
-            err = "密码不包含字母";
-            return err;
-        }
-        let _check = params.password.indexOf('_');
-        if (-1 === _check) {
-            err = "密码不包含下横线"
-            return err;
-        };
 
         if (params.password.length < 6) {
             err = '密码长度小于6';
