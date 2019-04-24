@@ -95,6 +95,19 @@ class logicApi {
     static async getWord(ctx, next) {
         let params = ctx.request.body;
         try {
+            let fontStore = await FontStore.findOne({
+                userId: params.userId, 
+                fontfile: params.fontfile,
+                deleted: false,
+            });
+            if (!fontStore) {
+                ctx.body = {
+                    success: false,
+                    error: '当前字库不存在，获取失败'
+                };
+                return;
+            }
+
             let word =
                 await Word.findOne({
                     fontfile: params.fontfile,
