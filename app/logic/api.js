@@ -2,7 +2,6 @@ const User = require('../model/user');
 const MacConn = require('../model/macconn');
 const Incode = require('../model/incode');
 const FontStore = require('../model/fontStore');
-const Word = require('../model/word');
 const paramsCheck = require('../lib/paramsCheck');
 const selfUtil = require('../lib/util');
 const crypto = require('crypto');
@@ -99,32 +98,29 @@ class logicApi {
                 userId: params.userId, 
                 fontfile: params.fontfile,
                 deleted: false,
+                'data.word': params.word,
             });
+            
             if (!fontStore) {
                 ctx.body = {
                     success: false,
-                    error: '当前字库不存在，获取失败'
+                    error: '该文字没有录入'
                 };
                 return;
             }
 
-            let word =
-                await Word.findOne({
-                    fontfile: params.fontfile,
-                    word: params.word,
-                    userId: params.userId
-                }, '-_id word code');
-            if (word) {
-                ctx.body = {
-                    success: true,
-                    message: '获取成功',
-                    data: word
+            let wordcode = null;
+            for (let i = 0; i < fontStore.data.length; i++) {
+                if (fontStore.data[i].word === params.word) {
+                    wordcode = fontStore.data[i];
+                    break;
                 }
-            } else {
-                ctx.body = {
-                    success: false,
-                    error: '该文字没有录入'
-                }
+            }
+
+            ctx.body = {
+                success: true,
+                message: '获取成功',
+                data: wordcode
             }
         } catch (e) {
             ctx.body = {
@@ -140,36 +136,42 @@ class logicApi {
             params = JSON.parse(params);
         }
         try {
-            let fontStore = await FontStore.findOne({
+            await FontStore.updateOne({    ///先删除
                 userId: params.userId, 
                 fontfile: params.fontfile,
                 deleted: false,
+            }, {
+                $pull: {
+                    data: {
+                        word: params.wordcode.word
+                    }
+                }
             });
-            if (!fontStore) {
+
+            let res = await FontStore.updateOne({
+                userId: params.userId, 
+                fontfile: params.fontfile,
+                deleted: false,
+            }, {
+                $push: {
+                    data: {
+                        word: params.wordcode.word,
+                        code: params.wordcode.code
+                    }
+                }
+            })
+
+            if (res.n === 1) {
                 ctx.body = {
-                    success: false,
-                    error: '当前字库不存在，添加失败'
+                    success: true,
+                    message: '增加字体成功'
                 };
                 return;
             }
 
-            let word =
-                await Word.findOne({ userId: params.userId, fontfile: params.fontfile, word: params.wordcode.word });
-            if (word) {
-                word.code = params.wordcode.code;
-                await word.save();
-            } else {
-                word = new Word({
-                    userId: params.userId,
-                    fontfile: params.fontfile,
-                    word: params.wordcode.word,
-                    code: params.wordcode.code
-                })
-                await word.save();
-            }
             ctx.body = {
-                success: true,
-                message: '增加字体成功'
+                success: false,
+                message: '增加字体失败'
             }
         } catch (e) {
             ctx.body = {
@@ -220,9 +222,6 @@ class logicApi {
             }, '-createdAt -updatedAt -_id -userId');
 
             if (detail) {
-                let words =
-                    await Word.find({ userId: params.userId, fontfile: params.fontfile }, '-_id word code');
-                detail.data = words;
                 ctx.body = {
                     success: true,
                     message: '获取成功',
@@ -231,7 +230,7 @@ class logicApi {
             } else {
                 ctx.body = {
                     success: false,
-                    error: '获取字体失败，当前字体不存在'
+                    error: '获取字体库信息失败'
                 }
             }
         } catch (e) {
@@ -247,7 +246,7 @@ class logicApi {
         try {
             let fonts = await FontStore.find({
                 userId: params.userId, deleted: false
-            }, 'fontname fontlib done fontfile');
+            }, '-_id fontname fontlib done fontfile');
             ctx.body = {
                 success: true,
                 message: '获取成功',

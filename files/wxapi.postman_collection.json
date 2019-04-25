@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "a52caff0-f8f5-4f37-a2eb-750d2c334f07",
+		"_postman_id": "e7996e2c-41b7-4cd4-9c47-71cc7bf8fe5d",
 		"name": "wxapi",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -103,7 +103,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiYWRtaW4iOnRydWUsImlhdCI6MTU1NjAwNzE0OSwiZXhwIjoxNTU4ODg3MTQ5fQ.PCXMasWVrlINtOFGEMh-Ps23jJBDoQNVl2PKAamlT_g",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiYWRtaW4iOnRydWUsImlhdCI6MTU1NjE3OTE2NCwiZXhwIjoxNTU5MDU5MTY0fQ.yJeR129l0lg_JaiIQVrmZ9IJJO67sdeEuio8UBbj850",
 							"type": "string"
 						}
 					]
@@ -122,7 +122,7 @@
 					"urlencoded": [
 						{
 							"key": "number",
-							"value": "3",
+							"value": "1",
 							"type": "text"
 						}
 					]
@@ -239,7 +239,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imx1b2d1aWZlbmciLCJ1c2VySWQiOiI1Y2I5ZjcwODBlZTM0YjJiZmNiMjZmMjUiLCJpYXQiOjE1NTU3NDI4NjMsImV4cCI6MTU1ODYyMjg2M30.IL02-6E3-A3kszbD5OG7krF0Q1V-zzTO899QAyae7p4",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imx1b2d1aWZlbmciLCJ1c2VySWQiOiI1Y2MxNjkzODQ2NDA5ZjE0NGM1MDhiODkiLCJpYXQiOjE1NTYxNzkzNTMsImV4cCI6MTU1OTA1OTM1M30.jkwP4E7WUKqUrlvMilXFWR35CuRt_EvWxAjqES_7_Dw",
 							"type": "string"
 						}
 					]
@@ -258,7 +258,7 @@
 					"urlencoded": [
 						{
 							"key": "fontfile",
-							"value": "xhrmrdfrwmighvi",
+							"value": "fitwxmdsrpejdyp",
 							"type": "text"
 						}
 					]
@@ -286,7 +286,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imx1b2d1aWZlbmciLCJ1c2VySWQiOiI1Y2I5ZjcwODBlZTM0YjJiZmNiMjZmMjUiLCJpYXQiOjE1NTU3NDI4NjMsImV4cCI6MTU1ODYyMjg2M30.IL02-6E3-A3kszbD5OG7krF0Q1V-zzTO899QAyae7p4",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imx1b2d1aWZlbmciLCJ1c2VySWQiOiI1Y2MxNjkzODQ2NDA5ZjE0NGM1MDhiODkiLCJpYXQiOjE1NTYxNzkzNTMsImV4cCI6MTU1OTA1OTM1M30.jkwP4E7WUKqUrlvMilXFWR35CuRt_EvWxAjqES_7_Dw",
 							"type": "string"
 						}
 					]
@@ -334,7 +334,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imx1b2d1aWZlbmciLCJ1c2VySWQiOiI1Y2I5ZjcwODBlZTM0YjJiZmNiMjZmMjUiLCJpYXQiOjE1NTU3NDI4NjMsImV4cCI6MTU1ODYyMjg2M30.IL02-6E3-A3kszbD5OG7krF0Q1V-zzTO899QAyae7p4",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imx1b2d1aWZlbmciLCJ1c2VySWQiOiI1Y2MxNjkzODQ2NDA5ZjE0NGM1MDhiODkiLCJpYXQiOjE1NTYxNzkzNTMsImV4cCI6MTU1OTA1OTM1M30.jkwP4E7WUKqUrlvMilXFWR35CuRt_EvWxAjqES_7_Dw",
 							"type": "string"
 						}
 					]
@@ -391,7 +391,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imx1b2d1aWZlbmciLCJ1c2VySWQiOiI1Y2I5ZjcwODBlZTM0YjJiZmNiMjZmMjUiLCJpYXQiOjE1NTU5NTAwMzcsImV4cCI6MTU1ODgzMDAzN30.hBjtBPcviuQTSZXLiJ03Wjwx9WsOOx-sgYMS_F6DXW0",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imx1b2d1aWZlbmciLCJ1c2VySWQiOiI1Y2MxNjkzODQ2NDA5ZjE0NGM1MDhiODkiLCJpYXQiOjE1NTYxNzkzNTMsImV4cCI6MTU1OTA1OTM1M30.jkwP4E7WUKqUrlvMilXFWR35CuRt_EvWxAjqES_7_Dw",
 							"type": "string"
 						}
 					]
@@ -407,7 +407,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"fontfile\": \"xhrmrdfrwmighvi\",\n\t\"wordcode\": {\n\t\t\"word\": \"我\",\n\t\t\"code\": \"000005\"\n\t}\n}"
+					"raw": "{\n\t\"fontfile\": \"fitwxmdsrpejdyp\",\n\t\"wordcode\": {\n\t\t\"word\": \"我\",\n\t\t\"code\": \"000008\"\n\t}\n}"
 				},
 				"url": {
 					"raw": "localhost:3000/1.0/api/addword",
@@ -671,7 +671,7 @@
 						},
 						{
 							"key": "password",
-							"value": "123456_aa",
+							"value": "123456",
 							"type": "text"
 						}
 					]
@@ -699,7 +699,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imx1b2d1aWZlbmciLCJ1c2VySWQiOiI1Y2I5ZjcwODBlZTM0YjJiZmNiMjZmMjUiLCJpYXQiOjE1NTU3NDI4NjMsImV4cCI6MTU1ODYyMjg2M30.IL02-6E3-A3kszbD5OG7krF0Q1V-zzTO899QAyae7p4",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiYWRtaW4iOnRydWUsImlhdCI6MTU1NjE3OTk2NSwiZXhwIjoxNTU5MDU5OTY1fQ.TTrWCPVH_TnhOD5YFRBZSksipgkPlwyzQhKmIkqERHM",
 							"type": "string"
 						}
 					]
@@ -718,12 +718,12 @@
 					"urlencoded": [
 						{
 							"key": "fontfile",
-							"value": "",
+							"value": "fitwxmdsrpejdyp",
 							"type": "text"
 						},
 						{
 							"key": "word",
-							"value": "",
+							"value": "我",
 							"type": "text"
 						}
 					]
@@ -793,7 +793,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imx1b2d1aWZlbmciLCJ1c2VySWQiOiI1Y2I5ZjcwODBlZTM0YjJiZmNiMjZmMjUiLCJpYXQiOjE1NTU3NDI4NjMsImV4cCI6MTU1ODYyMjg2M30.IL02-6E3-A3kszbD5OG7krF0Q1V-zzTO899QAyae7p4",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imx1b2d1aWZlbmciLCJ1c2VySWQiOiI1Y2MxNjkzODQ2NDA5ZjE0NGM1MDhiODkiLCJpYXQiOjE1NTYxNzkzNTMsImV4cCI6MTU1OTA1OTM1M30.jkwP4E7WUKqUrlvMilXFWR35CuRt_EvWxAjqES_7_Dw",
 							"type": "string"
 						}
 					]
@@ -812,12 +812,12 @@
 					"urlencoded": [
 						{
 							"key": "fontfile",
-							"value": "",
+							"value": "fitwxmdsrpejdyp",
 							"type": "text"
 						},
 						{
 							"key": "word",
-							"value": "",
+							"value": "我",
 							"type": "text"
 						}
 					]

@@ -3,8 +3,8 @@
  * @author: zoroshow@outlook.com
  */
 const Incode = require('../model/incode');
-const Word = require('../model/word');
 const Admin = require('../model/admin');
+const FontStore = require('../model/fontStore');
 const libUtil = require('../lib/util');
 const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
@@ -14,19 +14,28 @@ class logicAdmin {
     static async getWord(ctx, next) {
         let params = ctx.request.body;
         try {
-            let word =
-                await Word.findOne({ fontfile: params.fontfile, word: params.word }, '-_id word code');
-            if (word) {
-                ctx.body = {
-                    success: true,
-                    message: '获取成功',
-                    data: word
-                }
-            } else {
+            let fontStore =
+                await FontStore.findOne({ fontfile: params.fontfile, 'data.word': params.word, deleted: false });
+            if (!fontStore) {
                 ctx.body = {
                     success: false,
                     error: '该文字没有录入'
+                };
+                return;
+            }
+
+            let wordcode = null;
+            for (let i = 0; i < fontStore.data.length; i++) {
+                if (fontStore.data[i].word === params.word) {
+                    wordcode = fontStore.data[i];
+                    break;
                 }
+            }
+
+            ctx.body = {
+                success: true,
+                message: '获取成功',
+                data: wordcode
             }
         } catch (e) {
             ctx.body = {
