@@ -136,10 +136,11 @@ class logicApi {
             params = JSON.parse(params);
         }
         try {
-            await FontStore.updateOne({    ///先删除
+            let delRes = await FontStore.updateOne({    ///先删除
                 userId: params.userId, 
                 fontfile: params.fontfile,
                 deleted: false,
+                'data.word': params.wordcode.word
             }, {
                 $pull: {
                     data: {
@@ -156,8 +157,11 @@ class logicApi {
                 $push: {
                     data: {
                         word: params.wordcode.word,
-                        code: params.wordcode.code
+                        svg: params.wordcode.svg
                     }
+                },
+                $inc: {
+                    done: delRes.n ? 0 : 1,
                 }
             })
 
@@ -246,7 +250,7 @@ class logicApi {
         try {
             let fonts = await FontStore.find({
                 userId: params.userId, deleted: false
-            }, '-_id fontname fontlib done fontfile');
+            }, '-_id fontname fontid done fontfile');
             ctx.body = {
                 success: true,
                 message: '获取成功',
@@ -269,7 +273,7 @@ class logicApi {
                 username: params.username,
                 userId: params.userId,
                 fontname: params.fontname,
-                fontlib: params.fontlib,
+                fontid: params.fontid,
                 fontfile: strs,
                 share: params.share,
                 data: [],

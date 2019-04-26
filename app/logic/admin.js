@@ -45,6 +45,57 @@ class logicAdmin {
         }
     }
 
+    static async trueDelFont(ctx, next) {
+        try {
+            await FontStore.deleteMany({deleted: true});
+            ctx.body = {
+                success: true,
+                message: '删除成功'
+            }
+        } catch (e) {
+            ctx.body = {
+                success: false,
+                error: e.message
+            }
+        }
+    }
+
+    static async trueDelIncode(ctx, next) {
+        try {
+            let res = await Incode.deleteMany({deleted: true});
+            ctx.body = {
+                success: true,
+                message: '删除成功'
+            }
+        } catch (e) {
+            ctx.body = {
+                success: false,
+                error: e.message
+            }
+        }
+    }
+
+    static async aliveIncode(ctx, next) {   ///获取任然可用的incode
+        try {
+            let incodes = await Incode.find({deleted: false});
+            incodes = incodes.map((incode) => {
+                return incode.code;
+            })
+
+            ctx.body = {
+                success: true,
+                message: '获取成功',
+                data: incodes
+            }
+
+        } catch (e) {
+            ctx.body = {
+                success: false,
+                error: e.message
+            }
+        }
+    }
+
     static async generateIncode(ctx, next) {   ///生成邀请码
         let params = ctx.request.body;
         let codes = [];

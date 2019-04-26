@@ -10,5 +10,8 @@ router.post('/generateIncode', logicAdmin.generateIncode);
 router.post('/overword', logicAdmin.getWord);
 router.post('/register', logicAdmin.register);
 router.post('/login', logicAdmin.login);
+router.post('/getallincode', logicAdmin.aliveIncode);
+router.post('/deleteusedincode', logicAdmin.trueDelIncode);
+router.post('/deletewordlib', logicAdmin.trueDelFont);
 
 module.exports = router;
