@@ -11,6 +11,7 @@ module.exports = {
             useNewUrlParser: true
         }
     },
+    aesKey: 'sagshdghytjyjyry',
     token: {
         secret: 'safasf',
         expire: 48 * 60 * 1000

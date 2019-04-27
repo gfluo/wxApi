@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e7996e2c-41b7-4cd4-9c47-71cc7bf8fe5d",
+		"_postman_id": "9a7bf047-6ab0-4037-8aeb-7d90bce80277",
 		"name": "wxapi",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -362,7 +362,7 @@
 							"type": "text"
 						},
 						{
-							"key": "fontlib",
+							"key": "fontid",
 							"value": "F002",
 							"type": "text"
 						}
@@ -407,7 +407,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"fontfile\": \"fitwxmdsrpejdyp\",\n\t\"wordcode\": {\n\t\t\"word\": \"我\",\n\t\t\"code\": \"000008\"\n\t}\n}"
+					"raw": "{\n\t\"fontfile\": \"fitwxmdsrpejdyp\",\n\t\"wordcode\": {\n\t\t\"word\": \"我\",\n\t\t\"svg\": \"000008\"\n\t}\n}"
 				},
 				"url": {
 					"raw": "localhost:3000/1.0/api/addword",
@@ -832,6 +832,159 @@
 						"1.0",
 						"api",
 						"getword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "获取所有可用的incode（超级权限）",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiYWRtaW4iOnRydWUsImlhdCI6MTU1NjI5NTY0NCwiZXhwIjoxNTU5MTc1NjQ0fQ.Y5jNwHblH1NStajvAuX9oS2r4uKvYHRifUEzMhgmKSU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3000/1.0/admin/getallincode",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"1.0",
+						"admin",
+						"getallincode"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "删除已经使用的incode（超级权限）",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiYWRtaW4iOnRydWUsImlhdCI6MTU1NjI5NTY0NCwiZXhwIjoxNTU5MTc1NjQ0fQ.Y5jNwHblH1NStajvAuX9oS2r4uKvYHRifUEzMhgmKSU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3000/1.0/admin/deleteusedincode",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"1.0",
+						"admin",
+						"deleteusedincode"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "删除已经删除的所有字体库（超级权限）",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiYWRtaW4iOnRydWUsImlhdCI6MTU1NjI5NTY0NCwiZXhwIjoxNTU5MTc1NjQ0fQ.Y5jNwHblH1NStajvAuX9oS2r4uKvYHRifUEzMhgmKSU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "localhost:3000/1.0/admin/deletewordlib",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"1.0",
+						"admin",
+						"deletewordlib"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "获取字体信息aes加密方式",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imx1b2d1aWZlbmciLCJ1c2VySWQiOiI1Y2MxNjkzODQ2NDA5ZjE0NGM1MDhiODkiLCJpYXQiOjE1NTYxNzkzNTMsImV4cCI6MTU1OTA1OTM1M30.jkwP4E7WUKqUrlvMilXFWR35CuRt_EvWxAjqES_7_Dw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "fontfile",
+							"value": "puhwvbavfrltoxf",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/1.0/api/engetfontdetail",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"1.0",
+						"api",
+						"engetfontdetail"
 					]
 				}
 			},

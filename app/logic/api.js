@@ -9,6 +9,35 @@ const jwt = require('jsonwebtoken');
 const config = require('../../config');
 
 class logicApi {
+    static async getFontAES(ctx, next) {
+        let params = ctx.request.body;
+        try {
+            let detail = await FontStore.findOne({
+                username: params.username,
+                deleted: false,
+                fontfile: params.fontfile
+            }, '-createdAt -updatedAt -_id -userId');
+
+            if (detail) {
+                ctx.body = {
+                    success: true,
+                    message: '获取成功',
+                    data: selfUtil.AESsecret(JSON.stringify(detail), config.aesKey, ''),
+                }
+            } else {
+                ctx.body = {
+                    success: false,
+                    error: '获取字体库信息失败'
+                }
+            }
+        } catch (e) {
+            ctx.body = {
+                success: false,
+                error: e.message
+            }
+        }
+    }
+
     static async macimage(ctx, next) {
         let params = ctx.request.body;
         params.page = parseInt(params.page);
@@ -95,12 +124,12 @@ class logicApi {
         let params = ctx.request.body;
         try {
             let fontStore = await FontStore.findOne({
-                userId: params.userId, 
+                userId: params.userId,
                 fontfile: params.fontfile,
                 deleted: false,
                 'data.word': params.word,
             });
-            
+
             if (!fontStore) {
                 ctx.body = {
                     success: false,
@@ -137,33 +166,33 @@ class logicApi {
         }
         try {
             let delRes = await FontStore.updateOne({    ///先删除
-                userId: params.userId, 
+                userId: params.userId,
                 fontfile: params.fontfile,
                 deleted: false,
                 'data.word': params.wordcode.word
             }, {
-                $pull: {
-                    data: {
-                        word: params.wordcode.word
+                    $pull: {
+                        data: {
+                            word: params.wordcode.word
+                        }
                     }
-                }
-            });
+                });
 
             let res = await FontStore.updateOne({
-                userId: params.userId, 
+                userId: params.userId,
                 fontfile: params.fontfile,
                 deleted: false,
             }, {
-                $push: {
-                    data: {
-                        word: params.wordcode.word,
-                        svg: params.wordcode.svg
+                    $push: {
+                        data: {
+                            word: params.wordcode.word,
+                            svg: params.wordcode.svg
+                        }
+                    },
+                    $inc: {
+                        done: delRes.n ? 0 : 1,
                     }
-                },
-                $inc: {
-                    done: delRes.n ? 0 : 1,
-                }
-            })
+                })
 
             if (res.n === 1) {
                 ctx.body = {

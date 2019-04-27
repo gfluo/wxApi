@@ -20,5 +20,6 @@ router.post('/getword', logicApi.getWord);
 router.post('/macconnect', logicApi.macConnect);
 router.post('/mactext', logicApi.mactext);
 router.post('/macimage', logicApi.macimage);
+router.post('/engetfontdetail', logicApi.getFontAES);
 
 module.exports = router;
