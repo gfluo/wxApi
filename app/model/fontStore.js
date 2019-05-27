@@ -15,7 +15,7 @@ let fontStoreScheam = new mongoose.Schema({
     username: {
         type: String
     },
-    fontib: {
+    fontid: {
         type: String,
     },
     done: {

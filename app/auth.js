@@ -11,16 +11,16 @@ const verify = util.promisify(jwt.verify);
 module.exports = async (ctx, next) => {
     let url = ctx.request.url;
 
-    if (`/${apiVersion}/api/userreg` === url 
-        || `/${apiVersion}/api/userlogin` === url
-        || `/${apiVersion}/admin/register` === url
-        || `/${apiVersion}/admin/login` === url
-        || `/${apiVersion}/api/macconnect` === url
-        || `/${apiVersion}/api/mactext` === url
-        || `/${apiVersion}/api/macimage` === url
-        || `/${apiVersion}/api/userconnect` === url
-        || `/${apiVersion}/api/text` === url
-        || `/${apiVersion}/api/image` === url) {
+    if ( -1 < url.indexOf(`/${apiVersion}/api/userreg`) 
+        || -1 < url.indexOf(`/${apiVersion}/api/userlogin`)
+        || -1 < url.indexOf(`/${apiVersion}/admin/register`)
+        || -1 < url.indexOf(`/${apiVersion}/admin/login`)
+        || -1 < url.indexOf(`/${apiVersion}/api/macconnect`)
+        || -1 < url.indexOf(`/${apiVersion}/api/mactext`)
+        || -1 < url.indexOf(`/${apiVersion}/api/macimage`)
+        || -1 < url.indexOf(`/${apiVersion}/api/userconnect`)
+        || -1 < url.indexOf(`/${apiVersion}/api/text`)
+        || -1 < url.indexOf(`/${apiVersion}/api/image`)) {
         await next();
     } else {
         try {
@@ -28,6 +28,7 @@ module.exports = async (ctx, next) => {
             let userInfo = await verify(userToken, token.secret);
             if (-1 < url.indexOf('admin') && !userInfo.admin) {
                 ctx.body = {
+                    errorCode: 403,
                     success: false,
                     error: 'token认证失败'
                 };

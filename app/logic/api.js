@@ -219,7 +219,9 @@ class logicApi {
         try {
             let res = await FontStore.updateOne({
                 username: params.username,
-                fontfile: params.fontfile,
+                $in: { 
+                    fontfile: params.fontfiles 
+                },
                 deleted: false,
             }, {
                     $set: {
@@ -283,6 +285,7 @@ class logicApi {
             ctx.body = {
                 success: true,
                 message: '获取成功',
+                total: fonts.length,
                 data: fonts
             }
         } catch (e) {
