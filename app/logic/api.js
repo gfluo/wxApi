@@ -218,10 +218,10 @@ class logicApi {
         let params = ctx.request.body;
         try {
             let res = await FontStore.updateOne({
-                username: params.username,
-                $in: { 
-                    fontfile: params.fontfiles 
+                fontfile: { 
+                    $in: params.fontfiles 
                 },
+                username: params.username,
                 deleted: false,
             }, {
                     $set: {
