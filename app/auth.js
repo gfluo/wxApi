@@ -39,6 +39,7 @@ module.exports = async (ctx, next) => {
             await next();
         } catch (e) {
             ctx.body = {
+                errorCode: 403,
                 success: false,
                 error: 'token认证失败'
             }
