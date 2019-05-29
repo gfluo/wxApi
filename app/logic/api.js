@@ -228,7 +228,7 @@ class logicApi {
                         deleted: true
                     }
                 });
-            if (res.n === 1) {
+            if (res.n) {
                 ctx.body = {
                     success: true,
                     message: '删除字体库成功'
