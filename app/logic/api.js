@@ -218,8 +218,8 @@ class logicApi {
         let params = ctx.request.body;
         try {
             let res = await FontStore.updateMany({
-                fontfile: { 
-                    $in: params.fontfiles 
+                fontfile: {
+                    $in: params.fontfiles
                 },
                 username: params.username,
                 deleted: false,
