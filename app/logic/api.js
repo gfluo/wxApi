@@ -217,7 +217,7 @@ class logicApi {
     static async delFont(ctx, next) {
         let params = ctx.request.body;
         try {
-            let res = await FontStore.updateOne({
+            let res = await FontStore.updateMany({
                 fontfile: { 
                     $in: params.fontfiles 
                 },
