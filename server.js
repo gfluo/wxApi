@@ -5,10 +5,13 @@ const Api = require('./app/router/api');
 const Admin = require('./app/router/admin');
 const Auth = require('./app/auth');
 const app = new Koa();
+const static = require('koa-static');
+const path = require('path');
 
 app.use(koaBody());
 
 app
+    .use(static(path.join(__dirname, './public')))
     .use(Auth)
     .use(Api.routes())
     .use(Api.allowedMethods())
